@@ -1,30 +1,35 @@
+int r= 0;
+int g= 0;
+int b=0;
+
 void setup() {
   size(1000, 800);
   rectMode(CENTER);
   background(0);
+
+  for (float row= 300; row<= 800; row=row+250) {
+    for (float b=-50; b<= 1000; b=b+100) {
+      building(b, row, random(200, 300), 100, random(1, 3));
+    }
+  }
 }
 
 void draw() {
-  building(400, 800, 700, 200, 3);
-  building(600, 800, 600, 300, 4);
 }
 
-void building(float xCenter, float Ybottom, float BuildingHeight, 
-float w, int numWindows) {
+void building(float xCenter, float Ybottom, float BuildingHeight,
+  float w, float numWindows) {
   // height is 200
-  rect(xCenter, Ybottom - 200 / 2, w, BuildingHeight);
+  fill(random(255), random(255), random(255));
+  rect(xCenter, Ybottom - BuildingHeight/2, w, BuildingHeight);
   // door height
   rect(xCenter, Ybottom- 50, w/4, 100);
-    float yCenter= Ybottom- BuildingHeight/2;
+  float yCenter= Ybottom- BuildingHeight/2;
   //windows
   float spacing= w/(numWindows+1);
   float xLeft= xCenter-w/2;
-  int x=1;
-  while(x<= numWindows) {
-  rect(xLeft+ x*spacing, yCenter, 30, 30); 
-  x=x+1;
+
+  for (int x=1; x<= numWindows; x=x+1) {
+    rect(xLeft+ x*spacing, yCenter, 30, 30);
   }
- 
- 
-  
 }
